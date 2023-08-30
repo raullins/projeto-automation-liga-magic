@@ -17,4 +17,15 @@ TC02 - Entro no site da Liga Magic, procuro por uma carta e adiciono-a no carrin
     When Procuro pela carta Chain of Smog
     And Adiciono a carta no carrinho
     Sleep  3
-    Then Vejo minha lista dentro do carrinho 
+    Then Vejo minha lista dentro do carrinho
+
+TC03 - Entro no site da Liga Magic, procuro por cartas a partir de uma lista
+    Given Entro no site
+    FOR  ${carta}     IN      @{listaDeCartas}
+
+    When Procuro pela carta ${carta}
+    And Adiciono a carta no carrinho
+
+    END
+    Then Vejo minha lista dentro do carrinho
+    Sleep  30s

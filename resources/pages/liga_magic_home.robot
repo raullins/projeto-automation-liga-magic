@@ -5,6 +5,7 @@ Resource  ../main.robot
 &{home}
 ...  inputPesquisa=//input[@id="mainsearch"]
 ...  botaoFecharAd=//img[@id="campanha-del-1"]
+...  primeiroResultadoBusca=(//section[@class="item"])[1]
 
 *** Keywords ***
 Entro no site
@@ -16,4 +17,6 @@ Entro no site
 Procuro pela carta &{carta}
     Wait Until Element Is Visible  ${home.inputPesquisa}
     Input Text  ${home.inputPesquisa}  ${carta}
-    Press Key  ${home.inputPesquisa}  Enter
+    #Press Key  ${home.inputPesquisa}  Enter
+    Wait Until Element Is Visible  ${home.primeiroResultadoBusca}
+    Click Element  ${home.primeiroResultadoBusca}

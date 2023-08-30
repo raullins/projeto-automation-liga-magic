@@ -15,7 +15,9 @@ Adiciono a carta no carrinho
 Procuro pela carta ${carta}
     Wait Until Element Is Visible  ${home.inputPesquisa}
     Input Text  ${home.inputPesquisa}  ${carta}
-    Press Keys  ${home.inputPesquisa}  ENTER
+    #Press Keys  ${home.inputPesquisa}  ENTER
+    Wait Until Element Is Visible  ${home.primeiroResultadoBusca}
+    Click Element  ${home.primeiroResultadoBusca}
 
 Vejo minha lista dentro do carrinho
     Click Element  ${resultado_busca.verCarrinho}
