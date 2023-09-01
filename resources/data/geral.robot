@@ -8,3 +8,12 @@ Resource  ../main.robot
 ...  Username=
 ...  Password=
 
+*** Keywords ***
+#Setup
+Abrir ${URL} no ${navegador}
+    Open Browser  ${URL}  ${navegador}
+    Maximize Browser Window
+
+#Teardown
+Fechar brower atual
+    Close Browser

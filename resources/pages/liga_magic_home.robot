@@ -9,8 +9,8 @@ Resource  ../main.robot
 
 *** Keywords ***
 Entro no site
-    Open Browser  ${geral.URL}  ${geral.Browser}
-    Maximize Browser Window
+    #Open Browser  ${geral.URL}  ${geral.Browser}
+    #Maximize Browser Window
     Wait Until Element Is Visible  ${home.botaoFecharAd}
     Click Element  ${home.botaoFecharAd}
 

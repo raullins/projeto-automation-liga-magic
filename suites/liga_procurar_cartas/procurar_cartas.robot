@@ -1,6 +1,9 @@
 *** Settings ***
 Resource  ../../resources/main.robot
 
+Test Setup  Abrir ${geral.URL} no ${geral.Browser}
+Test Teardown  Fechar brower atual
+
 *** Test Cases ***
 TC01 - Entro no site da Liga Magic, procuro por três cartas e adiciono-as no carrinho
     Given Entro no site
@@ -14,12 +17,14 @@ TC01 - Entro no site da Liga Magic, procuro por três cartas e adiciono-as no ca
 
 TC02 - Entro no site da Liga Magic, procuro por uma carta e adiciono-a no carrinho
     Given Entro no site
-    When Procuro pela carta Chain of Smog
+    #When Procuro pela carta Chain of Smog
+    When Procuro pela carta Korvold, Fae-Cursed King
     And Adiciono a carta no carrinho
     Sleep  3
     Then Vejo minha lista dentro do carrinho
 
 TC03 - Entro no site da Liga Magic, procuro por cartas a partir de uma lista
+    Set Selenium Speed  1 second
     Given Entro no site
     FOR  ${carta}     IN      @{listaDeCartas}
 
