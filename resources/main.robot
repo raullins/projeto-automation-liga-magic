@@ -11,3 +11,4 @@ Resource  data/geral.robot
 ### Pages ###
 Resource  pages/liga_magic_home.robot
 Resource  pages/resultado_busca.robot
+Resource  pages/meu_carrinho.robot

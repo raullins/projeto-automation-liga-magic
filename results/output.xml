@@ -1,124 +1,659 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230901 10:57:50.265" rpa="false" schemaversion="4">
-<suite id="s1" name="Procurar Cartas" source="C:\Users\Raul\Desktop\VSCode\Robot - Python\automação-testes\suites\liga_procurar_cartas\procurar_cartas.robot">
-<test id="s1-t1" name="TC02 - Entro no site da Liga Magic, procuro por uma carta e adiciono-a no carrinho" line="18">
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230903 20:47:32.463" rpa="false" schemaversion="4">
+<suite id="s1" name="Liga Procurar Cartas" source="C:\Users\Raul\Desktop\VSCode\Robot - Python\automação-testes\suites\liga_procurar_cartas">
+<suite id="s1-s1" name="Procurar Cartas" source="C:\Users\Raul\Desktop\VSCode\Robot - Python\automação-testes\suites\liga_procurar_cartas\procurar_cartas.robot">
+<test id="s1-s1-t1" name="TC01 - Entro no site da Liga Magic, procuro por três cartas e adiciono-as no carrinho" line="8">
 <kw name="Abrir https://www.ligamagic.com.br/ no Chrome" library="geral" type="SETUP" sourcename="Abrir ${URL} no ${navegador}">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${URL}</arg>
 <arg>${navegador}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230901 10:57:50.426" level="INFO">Opening browser 'Chrome' to base url 'https://www.ligamagic.com.br/'.</msg>
-<msg timestamp="20230901 10:57:50.969" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
-<status status="PASS" starttime="20230901 10:57:50.426" endtime="20230901 10:57:56.091"/>
+<msg timestamp="20230903 20:47:32.655" level="INFO">Opening browser 'Chrome' to base url 'https://www.ligamagic.com.br/'.</msg>
+<msg timestamp="20230903 20:47:33.192" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20230903 20:47:32.654" endtime="20230903 20:47:36.492"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230901 10:57:56.091" endtime="20230901 10:57:56.215"/>
+<status status="PASS" starttime="20230903 20:47:36.492" endtime="20230903 20:47:36.615"/>
 </kw>
-<status status="PASS" starttime="20230901 10:57:50.425" endtime="20230901 10:57:56.215"/>
+<status status="PASS" starttime="20230903 20:47:32.653" endtime="20230903 20:47:36.615"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>1 second</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230903 20:47:36.616" endtime="20230903 20:47:36.616"/>
 </kw>
 <kw name="Given Entro no site" library="liga_magic_home">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>${home.botaoFecharAd}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230901 10:57:56.216" endtime="20230901 10:57:56.253"/>
+<status status="PASS" starttime="20230903 20:47:36.617" endtime="20230903 20:47:38.645"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${home.botaoFecharAd}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230901 10:57:56.254" level="INFO">Clicking element '//img[@id="campanha-del-1"]'.</msg>
-<status status="PASS" starttime="20230901 10:57:56.253" endtime="20230901 10:57:56.476"/>
+<msg timestamp="20230903 20:47:38.646" level="INFO">Clicking element '//img[@id="campanha-del-1"]'.</msg>
+<status status="PASS" starttime="20230903 20:47:38.645" endtime="20230903 20:47:40.685"/>
 </kw>
-<status status="PASS" starttime="20230901 10:57:56.215" endtime="20230901 10:57:56.476"/>
+<status status="PASS" starttime="20230903 20:47:36.616" endtime="20230903 20:47:40.685"/>
 </kw>
-<kw name="When Procuro pela carta Korvold, Fae-Cursed King" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="When Procuro pela carta ${cartas_a_procura.${escalar}}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${home.inputPesquisa}</arg>
+<arg>${geral.INPUT_PESQUISA}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230901 10:57:56.477" endtime="20230901 10:57:56.528"/>
+<status status="PASS" starttime="20230903 20:47:40.686" endtime="20230903 20:47:42.716"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
-<arg>${home.inputPesquisa}</arg>
+<arg>${geral.INPUT_PESQUISA}</arg>
 <arg>${carta}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20230901 10:57:56.529" level="INFO">Typing text 'Korvold, Fae-Cursed King' into text field '//input[@id="mainsearch"]'.</msg>
-<status status="PASS" starttime="20230901 10:57:56.528" endtime="20230901 10:57:56.629"/>
+<msg timestamp="20230903 20:47:42.717" level="INFO">Typing text 'Twinflame' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:47:42.716" endtime="20230903 20:47:45.806"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${home.primeiroResultadoBusca}</arg>
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230901 10:57:56.629" endtime="20230901 10:57:57.897"/>
+<status status="PASS" starttime="20230903 20:47:45.806" endtime="20230903 20:47:47.826"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${home.primeiroResultadoBusca}</arg>
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230901 10:57:57.898" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
-<status status="PASS" starttime="20230901 10:57:57.897" endtime="20230901 10:57:59.491"/>
+<msg timestamp="20230903 20:47:47.827" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:47:47.826" endtime="20230903 20:47:52.059"/>
 </kw>
-<status status="PASS" starttime="20230901 10:57:56.477" endtime="20230901 10:57:59.491"/>
+<status status="PASS" starttime="20230903 20:47:40.685" endtime="20230903 20:47:52.059"/>
 </kw>
 <kw name="And Adiciono a carta no carrinho" library="resultado_busca">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <arg>${resultado_busca.addListaDeCompras}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230901 10:57:59.492" endtime="20230901 10:57:59.546"/>
+<status status="PASS" starttime="20230903 20:47:52.060" endtime="20230903 20:47:54.079"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${resultado_busca.addListaDeCompras}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230901 10:57:59.547" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
-<status status="PASS" starttime="20230901 10:57:59.546" endtime="20230901 10:57:59.636"/>
+<msg timestamp="20230903 20:47:54.079" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:47:54.079" endtime="20230903 20:47:56.127"/>
 </kw>
-<status status="PASS" starttime="20230901 10:57:59.492" endtime="20230901 10:57:59.636"/>
+<status status="PASS" starttime="20230903 20:47:52.059" endtime="20230903 20:47:56.127"/>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>3</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230901 10:58:02.637" level="INFO">Slept 3 seconds</msg>
-<status status="PASS" starttime="20230901 10:57:59.636" endtime="20230901 10:58:02.637"/>
-</kw>
-<kw name="Then Vejo minha lista dentro do carrinho" library="resultado_busca">
+<kw name="When Vejo minha lista dentro do carrinho" library="resultado_busca">
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${resultado_busca.verCarrinho}</arg>
+<arg>${geral.VER_CARRINHO}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230901 10:58:02.638" level="INFO">Clicking element '//button[@id='dropdownMenuCart']'.</msg>
-<status status="PASS" starttime="20230901 10:58:02.638" endtime="20230901 10:58:02.687"/>
+<msg timestamp="20230903 20:47:56.129" level="INFO">Clicking element '//button[@id='dropdownMenuCart']'.</msg>
+<status status="PASS" starttime="20230903 20:47:56.128" endtime="20230903 20:47:58.174"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>${resultado_busca.verMinhaLista}</arg>
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20230901 10:58:02.687" endtime="20230901 10:58:02.915"/>
+<status status="PASS" starttime="20230903 20:47:58.174" endtime="20230903 20:48:00.197"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${resultado_busca.verMinhaLista}</arg>
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20230901 10:58:02.916" level="INFO">Clicking element '//a[@id='btn-view-cart-lc']'.</msg>
-<status status="PASS" starttime="20230901 10:58:02.915" endtime="20230901 10:58:05.172"/>
+<msg timestamp="20230903 20:48:00.198" level="INFO">Clicking element '//a[@id='btn-view-cart-lc']'.</msg>
+<status status="PASS" starttime="20230903 20:48:00.197" endtime="20230903 20:48:03.897"/>
 </kw>
-<status status="PASS" starttime="20230901 10:58:02.637" endtime="20230901 10:58:05.172"/>
+<status status="PASS" starttime="20230903 20:47:56.128" endtime="20230903 20:48:03.897"/>
+</kw>
+<kw name="Then Valido o conteudo do carrinho devendo conter ${cartas_a_procura.${escalar}}" library="meu_carrinho" sourcename="Valido o conteudo do carrinho devendo conter ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${carrinho.botao_otimizar_lista}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:03.897" endtime="20230903 20:48:05.918"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${carta}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230903 20:48:07.940" level="INFO">Current page contains text 'Twinflame'.</msg>
+<status status="PASS" starttime="20230903 20:48:05.918" endtime="20230903 20:48:07.940"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:03.897" endtime="20230903 20:48:07.940"/>
 </kw>
 <kw name="Fechar brower atual" library="geral" type="TEARDOWN">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20230901 10:58:05.173" endtime="20230901 10:58:07.338"/>
+<status status="PASS" starttime="20230903 20:48:07.941" endtime="20230903 20:48:11.003"/>
 </kw>
-<status status="PASS" starttime="20230901 10:58:05.172" endtime="20230901 10:58:07.338"/>
+<status status="PASS" starttime="20230903 20:48:07.940" endtime="20230903 20:48:11.003"/>
 </kw>
-<status status="PASS" starttime="20230901 10:57:50.424" endtime="20230901 10:58:07.339"/>
+<status status="PASS" starttime="20230903 20:47:32.652" endtime="20230903 20:48:11.003"/>
 </test>
-<status status="PASS" starttime="20230901 10:57:50.266" endtime="20230901 10:58:07.340"/>
+<test id="s1-s1-t2" name="TC02 - Entro no site da Liga Magic, procuro por uma carta específica e adiciono-a no carrinho" line="20">
+<kw name="Abrir https://www.ligamagic.com.br/ no Chrome" library="geral" type="SETUP" sourcename="Abrir ${URL} no ${navegador}">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${navegador}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230903 20:48:11.006" level="INFO">Opening browser 'Chrome' to base url 'https://www.ligamagic.com.br/'.</msg>
+<msg timestamp="20230903 20:48:11.561" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20230903 20:48:11.006" endtime="20230903 20:48:15.735"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230903 20:48:15.735" endtime="20230903 20:48:16.856"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:11.005" endtime="20230903 20:48:16.856"/>
+</kw>
+<kw name="Given Entro no site" library="liga_magic_home">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${home.botaoFecharAd}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:16.857" endtime="20230903 20:48:18.882"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${home.botaoFecharAd}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:18.883" level="INFO">Clicking element '//img[@id="campanha-del-1"]'.</msg>
+<status status="PASS" starttime="20230903 20:48:18.882" endtime="20230903 20:48:20.924"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:16.857" endtime="20230903 20:48:20.924"/>
+</kw>
+<kw name="When Procuro pela carta Korvold, Fae-Cursed King" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:20.924" endtime="20230903 20:48:22.952"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:22.953" level="INFO">Typing text 'Korvold, Fae-Cursed King' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:48:22.952" endtime="20230903 20:48:26.053"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:26.053" endtime="20230903 20:48:29.286"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:29.287" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:48:29.286" endtime="20230903 20:48:33.853"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:20.924" endtime="20230903 20:48:33.853"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:33.854" endtime="20230903 20:48:35.884"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:35.884" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:48:35.884" endtime="20230903 20:48:37.931"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:33.853" endtime="20230903 20:48:37.931"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230903 20:48:40.932" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230903 20:48:37.931" endtime="20230903 20:48:40.932"/>
+</kw>
+<kw name="When Vejo minha lista dentro do carrinho" library="resultado_busca">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.VER_CARRINHO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:40.933" level="INFO">Clicking element '//button[@id='dropdownMenuCart']'.</msg>
+<status status="PASS" starttime="20230903 20:48:40.933" endtime="20230903 20:48:42.979"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:42.979" endtime="20230903 20:48:45.000"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:48:45.000" level="INFO">Clicking element '//a[@id='btn-view-cart-lc']'.</msg>
+<status status="PASS" starttime="20230903 20:48:45.000" endtime="20230903 20:48:50.311"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:40.933" endtime="20230903 20:48:50.311"/>
+</kw>
+<kw name="Then Valido o conteudo do carrinho devendo conter Korvold, Fae-Cursed King" library="meu_carrinho" sourcename="Valido o conteudo do carrinho devendo conter ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${carrinho.botao_otimizar_lista}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:48:50.312" endtime="20230903 20:48:52.332"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${carta}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230903 20:48:54.353" level="INFO">Current page contains text 'Korvold, Fae-Cursed King'.</msg>
+<status status="PASS" starttime="20230903 20:48:52.332" endtime="20230903 20:48:54.353"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:50.311" endtime="20230903 20:48:54.353"/>
+</kw>
+<kw name="Fechar brower atual" library="geral" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230903 20:48:54.354" endtime="20230903 20:48:57.406"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:54.353" endtime="20230903 20:48:57.406"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:11.004" endtime="20230903 20:48:57.406"/>
+</test>
+<test id="s1-s1-t3" name="TC03 - Entro no site da Liga Magic, procuro por cartas a partir de uma lista" line="29">
+<kw name="Abrir https://www.ligamagic.com.br/ no Chrome" library="geral" type="SETUP" sourcename="Abrir ${URL} no ${navegador}">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${navegador}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230903 20:48:57.409" level="INFO">Opening browser 'Chrome' to base url 'https://www.ligamagic.com.br/'.</msg>
+<msg timestamp="20230903 20:48:57.945" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<status status="PASS" starttime="20230903 20:48:57.409" endtime="20230903 20:49:03.149"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20230903 20:49:03.149" endtime="20230903 20:49:04.274"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:57.408" endtime="20230903 20:49:04.274"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>1 second</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20230903 20:49:04.274" endtime="20230903 20:49:04.275"/>
+</kw>
+<kw name="Given Entro no site" library="liga_magic_home">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${home.botaoFecharAd}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:04.275" endtime="20230903 20:49:06.301"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${home.botaoFecharAd}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:06.301" level="INFO">Clicking element '//img[@id="campanha-del-1"]'.</msg>
+<status status="PASS" starttime="20230903 20:49:06.301" endtime="20230903 20:49:08.343"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:04.275" endtime="20230903 20:49:08.343"/>
+</kw>
+<for flavor="IN">
+<var>${carta}</var>
+<value>@{listaDeCartas}</value>
+<iter>
+<var name="${carta}">Lossarnach Captain</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:08.344" endtime="20230903 20:49:10.370"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:10.371" level="INFO">Typing text 'Lossarnach Captain' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:49:10.370" endtime="20230903 20:49:13.467"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:13.467" endtime="20230903 20:49:16.697"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:16.697" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:16.697" endtime="20230903 20:49:21.134"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:08.344" endtime="20230903 20:49:21.134"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:21.134" endtime="20230903 20:49:23.165"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:23.166" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:23.165" endtime="20230903 20:49:25.211"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:21.134" endtime="20230903 20:49:25.211"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:08.343" endtime="20230903 20:49:25.211"/>
+</iter>
+<iter>
+<var name="${carta}">Horn of Gondor</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:25.211" endtime="20230903 20:49:27.229"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:27.230" level="INFO">Typing text 'Horn of Gondor' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:49:27.229" endtime="20230903 20:49:30.308"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:30.308" endtime="20230903 20:49:32.325"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:32.326" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:32.325" endtime="20230903 20:49:35.784"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:25.211" endtime="20230903 20:49:35.784"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:35.784" endtime="20230903 20:49:37.805"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:37.805" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:37.805" endtime="20230903 20:49:39.847"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:35.784" endtime="20230903 20:49:39.847"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:25.211" endtime="20230903 20:49:39.847"/>
+</iter>
+<iter>
+<var name="${carta}">Clever Concealment</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:39.847" endtime="20230903 20:49:41.866"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:41.867" level="INFO">Typing text 'Clever Concealment' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:49:41.866" endtime="20230903 20:49:44.947"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:44.947" endtime="20230903 20:49:46.968"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:46.968" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:46.968" endtime="20230903 20:49:50.687"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:39.847" endtime="20230903 20:49:50.687"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:50.687" endtime="20230903 20:49:52.705"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:52.706" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:49:52.705" endtime="20230903 20:49:54.745"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:50.687" endtime="20230903 20:49:54.745"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:39.847" endtime="20230903 20:49:54.745"/>
+</iter>
+<iter>
+<var name="${carta}">Flawless Maneuver</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:54.745" endtime="20230903 20:49:56.764"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:49:56.765" level="INFO">Typing text 'Flawless Maneuver' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:49:56.764" endtime="20230903 20:49:59.845"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:49:59.845" endtime="20230903 20:50:01.864"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:01.864" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:01.864" endtime="20230903 20:50:05.742"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:54.745" endtime="20230903 20:50:05.742"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:05.742" endtime="20230903 20:50:07.760"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:07.761" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:07.760" endtime="20230903 20:50:09.805"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:05.742" endtime="20230903 20:50:09.805"/>
+</kw>
+<status status="PASS" starttime="20230903 20:49:54.745" endtime="20230903 20:50:09.805"/>
+</iter>
+<iter>
+<var name="${carta}">Abdel Adrian, Gorion's Ward</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:09.805" endtime="20230903 20:50:11.822"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:11.822" level="INFO">Typing text 'Abdel Adrian, Gorion's Ward' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:50:11.822" endtime="20230903 20:50:14.914"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:14.914" endtime="20230903 20:50:16.933"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:16.934" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:16.933" endtime="20230903 20:50:20.451"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:09.805" endtime="20230903 20:50:20.451"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:20.451" endtime="20230903 20:50:22.473"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:22.474" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:22.473" endtime="20230903 20:50:24.522"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:20.451" endtime="20230903 20:50:24.522"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:09.805" endtime="20230903 20:50:24.522"/>
+</iter>
+<iter>
+<var name="${carta}">Open the Way</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:24.522" endtime="20230903 20:50:26.544"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:26.544" level="INFO">Typing text 'Open the Way' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:50:26.544" endtime="20230903 20:50:29.623"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:29.623" endtime="20230903 20:50:31.646"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:31.647" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:31.646" endtime="20230903 20:50:35.348"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:24.522" endtime="20230903 20:50:35.348"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:35.348" endtime="20230903 20:50:37.367"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:37.368" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:37.367" endtime="20230903 20:50:39.413"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:35.348" endtime="20230903 20:50:39.413"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:24.522" endtime="20230903 20:50:39.413"/>
+</iter>
+<iter>
+<var name="${carta}">Rhystic Study</var>
+<kw name="When Procuro pela carta ${carta}" library="resultado_busca" sourcename="Procuro pela carta ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:39.414" endtime="20230903 20:50:41.433"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${geral.INPUT_PESQUISA}</arg>
+<arg>${carta}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:41.434" level="INFO">Typing text 'Rhystic Study' into text field '//input[@id="mainsearch"]'.</msg>
+<status status="PASS" starttime="20230903 20:50:41.433" endtime="20230903 20:50:44.511"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:44.511" endtime="20230903 20:50:46.528"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.PRIMEIRO_RESULTADO_DA_BUSCA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:46.528" level="INFO">Clicking element '(//section[@class="item"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:46.528" endtime="20230903 20:50:50.018"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:39.413" endtime="20230903 20:50:50.018"/>
+</kw>
+<kw name="And Adiciono a carta no carrinho" library="resultado_busca">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:50.018" endtime="20230903 20:50:52.038"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${resultado_busca.addListaDeCompras}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:52.039" level="INFO">Clicking element '(//button[@class="mp-botao-comprar"])[1]'.</msg>
+<status status="PASS" starttime="20230903 20:50:52.038" endtime="20230903 20:50:54.085"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:50.018" endtime="20230903 20:50:54.085"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:39.413" endtime="20230903 20:50:54.085"/>
+</iter>
+<status status="PASS" starttime="20230903 20:49:08.343" endtime="20230903 20:50:54.085"/>
+</for>
+<kw name="When Vejo minha lista dentro do carrinho" library="resultado_busca">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.VER_CARRINHO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:54.086" level="INFO">Clicking element '//button[@id='dropdownMenuCart']'.</msg>
+<status status="PASS" starttime="20230903 20:50:54.086" endtime="20230903 20:50:56.134"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:50:56.134" endtime="20230903 20:50:58.157"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${geral.VER_LISTA_DE_COMPRA}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230903 20:50:58.158" level="INFO">Clicking element '//a[@id='btn-view-cart-lc']'.</msg>
+<status status="PASS" starttime="20230903 20:50:58.157" endtime="20230903 20:51:01.941"/>
+</kw>
+<status status="PASS" starttime="20230903 20:50:54.086" endtime="20230903 20:51:01.941"/>
+</kw>
+<kw name="Then Valido o conteudo do carrinho devendo conter ${carta}" library="meu_carrinho" sourcename="Valido o conteudo do carrinho devendo conter ${carta}">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${carrinho.botao_otimizar_lista}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230903 20:51:01.942" endtime="20230903 20:51:03.963"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${carta}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230903 20:51:05.985" level="INFO">Current page contains text 'Rhystic Study'.</msg>
+<status status="PASS" starttime="20230903 20:51:03.963" endtime="20230903 20:51:05.985"/>
+</kw>
+<status status="PASS" starttime="20230903 20:51:01.942" endtime="20230903 20:51:05.985"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>30s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230903 20:51:35.987" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20230903 20:51:05.986" endtime="20230903 20:51:35.987"/>
+</kw>
+<kw name="Fechar brower atual" library="geral" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230903 20:51:35.988" endtime="20230903 20:51:39.041"/>
+</kw>
+<status status="PASS" starttime="20230903 20:51:35.987" endtime="20230903 20:51:39.041"/>
+</kw>
+<status status="PASS" starttime="20230903 20:48:57.407" endtime="20230903 20:51:39.042"/>
+</test>
+<status status="PASS" starttime="20230903 20:47:32.481" endtime="20230903 20:51:39.043"/>
+</suite>
+<status status="PASS" starttime="20230903 20:47:32.465" endtime="20230903 20:51:39.044"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Procurar Cartas">Procurar Cartas</stat>
+<stat pass="3" fail="0" skip="0" id="s1" name="Liga Procurar Cartas">Liga Procurar Cartas</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Procurar Cartas">Liga Procurar Cartas.Procurar Cartas</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230901 10:57:50.969" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg timestamp="20230903 20:47:33.192" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg timestamp="20230903 20:48:11.561" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg timestamp="20230903 20:48:57.945" level="WARN">The chromedriver version (115.0.5790.170) detected in PATH at C:\Users\Raul\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe might not be compatible with the detected chrome version (116.0.5845.141); currently, chromedriver 116.0.5845.96 is recommended for chrome 116.*, so it is advised to delete the driver in PATH and retry</msg>
 </errors>
 </robot>
